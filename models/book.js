@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
+    // _id will also be created implicitly for each instance of this model
     title: { type: String, required: true},
     author: { type: Schema.Types.ObjectID, ref: "Author", required: true},
     summary: { type: String, required: true},

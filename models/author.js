@@ -3,6 +3,7 @@ const { DateTime } = require("luxon");
 const Schema = mongoose.Schema;
 
 const AuthorSchema = new Schema({
+    // _id will also be created implicitly for each instance of this model
     first_name: { type: String, required: true, maxLenght: 100},
     family_name: { type: String, required: true, maxLenght: 100},
     date_of_birth: { type: Date },
@@ -35,5 +36,6 @@ AuthorSchema.virtual("name").get(function () {
     return this.date_of_death ?
       DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED): '';
   })
+
 
 module.exports = mongoose.model("Author", AuthorSchema);
